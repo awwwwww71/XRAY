@@ -51,8 +51,22 @@ read answer
 if [ "$answer" == "${answer#[Yy]}" ] ;then
 Tools Not Install
 else
-wget https://raw.githubusercontent.com/mymasway/XRAY/main/ssh/cf.sh && chmod +x cf.sh && ./cf.sh
-wget https://raw.githubusercontent.com/mymasway/XRAY/main/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh.sh
+wget https://raw.githubusercontent.com/mymasway/XRAY/main/cf.sh && chmod +x cf.sh && ./cf.sh
+wget https://raw.githubusercontent.com/mymasway/XRAY/main/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh.sh
+fi
+#
+
+#install Websocket
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e "\E[44;1;39m                     ⇱ INSTALL Websocket ⇲                       \E[0m"
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e ""
+echo -ne "[ ${yell}ORANGE${NC} ] Ingin Menginstall Websocket ? (y/n)? "
+read answer
+if [ "$answer" == "${answer#[Yy]}" ] ;then
+Tools Not Install
+else
+wget https://raw.githubusercontent.com/mymasway/XRAY/main/ins-sshws.sh && chmod +x ins-sshws.sh && ./ins-sshws.sh
 fi
 #
 
@@ -83,10 +97,10 @@ clear
 echo " "
 echo "Installation has been completed!!"echo " "
 echo "" | tee -a log-install.txt
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"tee -a log-install.txt
-echo -e "\E[44;1;39m                     ⇱ SCRIPT XRAY MULTI PORT ⇲                       \E[0m"tee -a log-install.txt
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"tee -a log-install.txt
-echo -e ""tee -a log-install.txt
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}" | tee -a log-install.txt
+echo -e "\E[44;1;39m                     ⇱ SCRIPT XRAY MULTI PORT ⇲                       \E[0m" | tee -a log-install.txt
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}" | tee -a log-install.txt
+echo -e "" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "   >>> Service & Port"  | tee -a log-install.txt
 echo "   - Nginx                                                    : 89"  | tee -a log-install.txt
@@ -101,7 +115,7 @@ echo "   - PORT OVPN SSL                  : 443"  | tee -a log-install.txt
 echo "   - PORT DROPBEAR                  : 443"  | tee -a log-install.txt
 echo "   - PORT OVPN WS TLS                  : 443"  | tee -a log-install.txt
 echo "   - WEBSOCKET TLS                  : 8443,2096,2053,443"  | tee -a log-install.txt
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"tee -a log-install.txt
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}" | tee -a log-install.txt
 echo "   - XRAYS TROJAN WS TLS                  : 443"  | tee -a log-install.txt
 echo "   - XRAYS SHADOWSOCKS WS TLS   : 443"  | tee -a log-install.txt
 echo "   - XRAYS VLESS WS TLS                      : 443"  | tee -a log-install.txt
@@ -115,7 +129,7 @@ echo "   - XRAYS SHADOWSOCKS GRPC        : 443"  | tee -a log-install.txt
 echo "   - XRAYS VMESS GRPC                         : 443"  | tee -a log-install.txt
 echo "   - XRAYS VLESS GRPC                          : 443"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"tee -a log-install.txt
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "   >>> Server Information & Other Features"  | tee -a log-install.txt
 echo "   - Timezone                : Asia/Jakarta (GMT +7)"  | tee -a log-install.txt
