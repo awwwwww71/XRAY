@@ -17,6 +17,9 @@ MYIP6=$(wget -qO- https://ipv6.icanhazip.com);
 # Link Hosting Kalian
 maswayvpn="raw.githubusercontent.com/mymasway/XRAY/main/ssh"
 
+# Link Hosting Kalian Untuk Stunnel5
+maswayvpnnnn="raw.githubusercontent.com/mymasway/XRAY/main/ssh"
+
 # initializing var
 export DEBIAN_FRONTEND=noninteractive
 MYIP=$(wget -qO- ipinfo.io/ip);
@@ -307,7 +310,7 @@ rm -rf /root/vnstat-2.6
 
 # install stunnel 5 
 cd /root/
-wget -q -O stunnel5.zip "https://${maswayvpnnnn}/stunnel5.zip"
+wget -q -O stunnel5.zip "https://${maswayvpn}/stunnel5.zip"
 unzip -o stunnel5.zip
 cd /root/stunnel
 chmod +x configure
