@@ -34,8 +34,9 @@ wget -O cekssh "https://raw.githubusercontent.com/mymasway/XRAY/main/ssh/cekssh.
 wget -O changeport "https://raw.githubusercontent.com/mymasway/XRAY/main/ssh/changeport.sh"
 wget -O delexp "https://raw.githubusercontent.com/mymasway/XRAY/main/ssh/delexp.sh"
 wget -O delssh "https://raw.githubusercontent.com/mymasway/XRAY/main/ssh/delssh.sh"
-wget -O menu "https://raw.githubusercontent.com/mymasway/XRAY/main/ssh/menu.sh"
-wget -O menuu "https://raw.githubusercontent.com/mymasway/XRAY/main/ssh/menuu.sh"
+wget -O menu "https://raw.githubusercontent.com/mymasway/XRAY/main/update/menu.sh"
+wget -O status "https://raw.githubusercontent.com/mymasway/XRAY/main/update/status.sh"
+wget -O sshovpnmenu "https://raw.githubusercontent.com/mymasway/XRAY/main/update/sshovpnmenu.sh"
 wget -O portdropbear "https://raw.githubusercontent.com/mymasway/XRAY/main/ssh/portdropbear.sh"
 wget -O portopenssh "https://raw.githubusercontent.com/mymasway/XRAY/main/menu/portopenssh.sh"
 wget -O portovpn "https://raw.githubusercontent.com/mymasway/XRAY/main/ssh/portovpn.sh"
@@ -72,8 +73,9 @@ chmod +x changeport
 chmod +x delexp
 chmod +x delssh
 chmod +x menu
+chmod +x status
 chmod +x /usr/bin/menu
-chmod +x menuu
+chmod +x sshovpnmenu
 chmod +x portdropbear
 chmod +x portopenssh
 chmod +x portovpn
