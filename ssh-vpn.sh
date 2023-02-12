@@ -15,7 +15,7 @@ MYIP=$(wget -qO- ipinfo.io/ip);
 #MYIP=$(wget -qO- https://ipv4.icanhazip.com);
 MYIP6=$(wget -qO- https://ipv6.icanhazip.com);
 # Link Hosting Kalian
-maswayvpn="raw.githubusercontent.com/mymasway/XRAY/main"
+maswayvpn="raw.githubusercontent.com/mymasway/XRAY/main/ssh"
 
 # initializing var
 export DEBIAN_FRONTEND=noninteractive
