@@ -21,13 +21,7 @@ LIGHT='\033[0;37m'
 # Getting
 MYIP=$(curl -sS ipv4.icanhazip.com)
 IZIN=$(curl -sS https://raw.githubusercontent.com/mymasway/kamunanya/main/ip | awk '{print $4}' | grep $MYIP)
-if [ "$MYIP" = "$IZIN" ]; then
-echo -e "ok"
-else
-res="Perizinan Di Tolak..."
-fi
-res="Perizinan Diberikan..."
-clear
+
 mkdir /var/lib/crot;
 echo "IP=" >> /var/lib/crot/ipvps.conf
 cd
