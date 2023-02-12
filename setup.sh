@@ -25,6 +25,7 @@ IZIN=$(curl -sS https://raw.githubusercontent.com/mymasway/kamunanya/main/ip | a
 mkdir /var/lib/crot;
 echo "IP=" >> /var/lib/crot/ipvps.conf
 cd
+clear
 #install tools/alat
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e "\E[44;1;39m                     ⇱ INSTALL TOOL/ALAT ⇲                       \E[0m"
@@ -39,7 +40,7 @@ wget https://raw.githubusercontent.com/mymasway/XRAY/main/install-tools.sh && ch
 fi
 #
 
-
+clear
 #install SSH
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e "\E[44;1;39m                     ⇱ INSTALL SSH & OPENVPN ⇲                       \E[0m"
@@ -55,7 +56,7 @@ wget https://raw.githubusercontent.com/mymasway/XRAY/main/ssh/ssh-vpn.sh && chmo
 fi
 #
 
-
+clear
 #Instal Xray
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e "\E[44;1;39m                     ⇱ INSTALL XRAY ⇲                       \E[0m"
@@ -69,7 +70,7 @@ else
 wget https://raw.githubusercontent.com/mymasway/XRAY/main/install-xray.sh && chmod +x install-xray.sh && ./install-xray.sh
 fi
 
-
+clear
 #install xmenu
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e "\E[44;1;39m                     ⇱ INSTALL MENU ⇲                       \E[0m"
@@ -78,6 +79,7 @@ echo -e ""
 wget https://raw.githubusercontent.com/mymasway/XRAY/main/menu/updatedll.sh && chmod +x updatedll.sh && ./updatedll.sh
 #
 #SELESAI
+clear
 echo " "
 echo "Installation has been completed!!"echo " "
 echo "" | tee -a log-install.txt
