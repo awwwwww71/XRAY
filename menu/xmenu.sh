@@ -15,7 +15,7 @@ echo -e "System Uptime   :  $uphours $upminutes $uptimecek"
 else
 echo -e "System Uptime   :  $uphours $upminutes"
 fi
-echo -e "IP-VPS          :  $IPVPS"
+echo -e "IP-VPS          :  $IP"
 echo -e "ISP-VPS         :  $ISPVPS"
 
 # // Export Color & Information
@@ -78,12 +78,12 @@ echo -e "\E[44;1;39m                     ⇱ MENU LAYANAN ⇲                   
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e ""
 echo -e " [${GREEN}01${NC}]${RED} •${NC} Buat Semua Akun XRAY $NC      [${GREEN}10${NC}]${RED} • ${NC}Add Domain $NC"
-echo -e " [${GREEN}02${NC}]${RED} •${NC} Hapus Akun XRAY $NC      [${GREEN}11${NC}]${RED} • ${NC}Speedtest $NC"
-echo -e " [${GREEN}03${NC}]${RED} •${NC} Cek Nama Domain $NC     [${GREEN}12${NC}]${RED} • ${NC}Reboot $NC"
-echo -e " [${GREEN}04${NC}]${RED} •${NC} Cek IP Publik $NC  [${GREEN}13${NC}]${RED} • ${NC}Exit Menu $NC"
-echo -e " [${GREEN}05${NC}]${RED} •${NC} Update DLL $NC [${GREEN}14${NC}]${RED} • ${NC}About $NC"
-echo -e " [${GREEN}06${NC}]${RED} •${NC} Xray Update Core $NC [${GREEN}15${NC}]${RED} • ${NC}Pointing Domain $NC"
-echo -e " [${GREEN}07${NC}]${RED} •${NC} Xray Update Script $NC [${GREEN}16${NC}]${RED} • ${NC}Check All Port Service $NC"
+echo -e " [${GREEN}02${NC}]${RED} •${NC} Hapus Akun XRAY $NC                 [${GREEN}11${NC}]${RED} • ${NC}Speedtest $NC"
+echo -e " [${GREEN}03${NC}]${RED} •${NC} Cek Nama Domain $NC               [${GREEN}12${NC}]${RED} • ${NC}Reboot $NC"
+echo -e " [${GREEN}04${NC}]${RED} •${NC} Cek IP Publik $NC                           [${GREEN}13${NC}]${RED} • ${NC}Exit Menu $NC"
+echo -e " [${GREEN}05${NC}]${RED} •${NC} Update DLL $NC                             [${GREEN}14${NC}]${RED} • ${NC}About $NC"
+echo -e " [${GREEN}06${NC}]${RED} •${NC} Xray Update Core $NC                  [${GREEN}15${NC}]${RED} • ${NC}Pointing Domain $NC"
+echo -e " [${GREEN}07${NC}]${RED} •${NC} Xray Update Script $NC                 [${GREEN}16${NC}]${RED} • ${NC}Check All Port Service $NC"
 echo -e " [${GREEN}08${NC}]${RED} •${NC} Restart Xray $NC"
 echo -e " [${GREEN}09${NC}]${RED} •${NC} Renew Cert $NC "
 echo -e " ${RED}"
