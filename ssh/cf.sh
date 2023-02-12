@@ -17,12 +17,12 @@ MYIP=$(wget -qO- ipinfo.io/ip);
 #MYIP=$(wget -qO- https://ipv6.icanhazip.com);
 clear
 apt install jq curl -y
-DOMAIN=gandring.my.id
-sub=$(</dev/urandom tr -dc a-z0-9 | head -c2)
+DOMAIN=indossh.ninja
+sub=$(</dev/urandom tr -dc a-z0-9 | head -c4)
 
-SUB_DOMAIN=${sub}.gandring.my.id
-CF_ID=djarumpentol01@gmail.com
-CF_KEY=00dffab0559c394b8e9dcd7b05fcf1fcd274d
+SUB_DOMAIN=${sub}.indossh.ninja
+CF_ID=akunabal.abal7770@gmail.com
+CF_KEY=4502348bc050806208bb10e3a1af5b9d1d018
 set -euo pipefail
 IP=$(wget -qO- ipinfo.io/ip);
 echo "Updating DNS for ${SUB_DOMAIN}..."
