@@ -52,7 +52,7 @@ if [ "$answer" == "${answer#[Yy]}" ] ;then
 Tools Not Install
 else
 wget https://raw.githubusercontent.com/mymasway/XRAY/main/cf.sh && chmod +x cf.sh && ./cf.sh
-wget https://raw.githubusercontent.com/mymasway/XRAY/main/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh.sh
+wget https://raw.githubusercontent.com/mymasway/XRAY/main/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
 fi
 #
 
