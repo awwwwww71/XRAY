@@ -66,7 +66,7 @@ read answer
 if [ "$answer" == "${answer#[Yy]}" ] ;then
 Tools Not Install
 else
-wget https://raw.githubusercontent.com/mymasway/XRAY/main/ssh/ins-sshws.sh && chmod +x ins-sshws.sh && ./ins-sshws.sh
+wget https://raw.githubusercontent.com/mymasway/XRAY/main/ins-sshws.sh && chmod +x ins-sshws.sh && ./ins-sshws.sh
 fi
 #
 
