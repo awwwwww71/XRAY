@@ -66,7 +66,7 @@ read answer
 if [ "$answer" == "${answer#[Yy]}" ] ;then
 Tools Not Install
 else
-wget https://raw.githubusercontent.com/mymasway/XRAY/main/ins-sshws.sh && chmod +x ins-sshws.sh && ./ins-sshws.sh
+wget https://raw.githubusercontent.com/mymasway/XRAY/main/websocket/python.sh && chmod +x python.sh && ./python.sh
 fi
 #
 
@@ -92,6 +92,21 @@ echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━�
 echo -e ""
 wget https://raw.githubusercontent.com/mymasway/XRAY/main/menu/updatedll.sh && chmod +x updatedll.sh && ./updatedll.sh
 #
+cat <<EOF> /etc/systemd/system/autosett.service
+[Unit]
+Description=autosetting
+Documentation=https://t.me/zerossl
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /etc/set.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+EOF
+systemctl daemon-reload
+systemctl enable autosett
 #SELESAI
 clear
 echo " "

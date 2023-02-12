@@ -443,7 +443,7 @@ echo "Banner /etc/issue.net" >>/etc/ssh/sshd_config
 sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
 
 # Install BBR
-wget https://${maswayvpn}/bbr.sh && chmod +x bbr.sh && ./bbr.sh
+#wget https://${maswayvpn}/bbr.sh && chmod +x bbr.sh && ./bbr.sh
 
 # Ganti Banner
 wget -O /etc/issue.net "https://${maswayvpn}/issue.net"
