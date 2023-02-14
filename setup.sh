@@ -17,85 +17,218 @@ BLUE='\033[0;34m'
 PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 LIGHT='\033[0;37m'
-# =========================================
-# Getting
+# ==========================================
+
+dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
+#########################
+
+BURIQ () {
+    curl -sS https://mymasway.github.io/izin > /root/tmp
+    data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
+    for user in "${data[@]}"
+    do
+    exp=( `grep -E "^### $user" "/root/tmp" | awk '{print $3}'` )
+    d1=(`date -d "$exp" +%s`)
+    d2=(`date -d "$biji" +%s`)
+    exp2=$(( (d1 - d2) / 86400 ))
+    if [[ "$exp2" -le "0" ]]; then
+    echo $user > /etc/.$user.ini
+    else
+    rm -f  /etc/.$user.ini > /dev/null 2>&1
+    fi
+    done
+    rm -f  /root/tmp
+}
+# https://mymasway.github.io/izin 
 MYIP=$(curl -sS ipv4.icanhazip.com)
-IZIN=$(curl -sS https://raw.githubusercontent.com/mymasway/kamunanya/main/ip | awk '{print $4}' | grep $MYIP)
+Name=$(curl -sS https://mymasway.github.io/izin | grep $MYIP | awk '{print $2}')
+echo $Name > /usr/local/etc/.$Name.ini
+CekOne=$(cat /usr/local/etc/.$Name.ini)
 
-mkdir /var/lib/crot;
-echo "IP=" >> /var/lib/crot/ipvps.conf
-cd
-clear
-#install tools/alat
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-echo -e "\E[44;1;39m                     ⇱ INSTALL TOOL/ALAT ⇲                       \E[0m"
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-echo -e ""
-echo -ne "[ ${yell}ORANGE${NC} ] Ingin Menginstall Tools ? (y/n)? "
-read answer
-if [ "$answer" == "${answer#[Yy]}" ] ;then
-Tools Not Install
+Bloman () {
+if [ -f "/etc/.$Name.ini" ]; then
+CekTwo=$(cat /etc/.$Name.ini)
+    if [ "$CekOne" = "$CekTwo" ]; then
+        res="Expired"
+    fi
 else
-wget https://raw.githubusercontent.com/mymasway/XRAY/main/install-tools.sh && chmod +x install-tools.sh && ./install-tools.sh
+res="Permission Accepted..."
 fi
-#
+}
 
-clear
-#install SSH
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-echo -e "\E[44;1;39m                     ⇱ INSTALL SSH & OPENVPN ⇲                       \E[0m"
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+PERMISSION () {
+    MYIP=$(curl -sS ipv4.icanhazip.com)
+    IZIN=$(curl -sS https://mymasway.github.io/izin | awk '{print $4}' | grep $MYIP)
+    if [ "$MYIP" = "$IZIN" ]; then
+    Bloman
+    else
+    res="Permission Denied!"
+    fi
+    BURIQ
+}
+PERMISSION
+# Link Hosting Kalian Untuk Ssh Vpn
+akbarvpn="raw.githubusercontent.com/mymasway/myscvpn/mw/ssh"
+# Link Hosting Kalian Untuk Sstp
+akbarvpnn="raw.githubusercontent.com/mymasway/myscvpn/mw/sstp"
+# Link Hosting Kalian Untuk Ssr
+akbarvpnnn="raw.githubusercontent.com/mymasway/myscvpn/mw/ssr"
+# Link Hosting Kalian Untuk Shadowsocks
+akbarvpnnnn="raw.githubusercontent.com/mymasway/myscvpn/mw/shadowsocks"
+# Link Hosting Kalian Untuk Wireguard
+akbarvpnnnnn="raw.githubusercontent.com/mymasway/myscvpn/mw/wireguard"
+# Link Hosting Kalian Untuk Xray
+akbarvpnnnnnn="raw.githubusercontent.com/mymasway/myscvpn/mw/xray"
+# Link Hosting Kalian Untuk Ipsec
+akbarvpnnnnnnn="raw.githubusercontent.com/mymasway/myscvpn/mw/ipsec"
+# Link Hosting Kalian Untuk Backup
+akbarvpnnnnnnnn="raw.githubusercontent.com/mymasway/myscvpn/mw/backup"
+# Link Hosting Kalian Untuk Websocket
+akbarvpnnnnnnnnn="raw.githubusercontent.com/mymasway/myscvpn/mw/websocket"
+# Link Hosting Kalian Untuk Ohp
+akbarvpnnnnnnnnnn="raw.githubusercontent.com/mymasway/myscvpn/mw/ohp"
+
+# Getting
 echo -e ""
-echo -ne "[ ${yell}ORANGE${NC} ] Ingin Menginstall SSH ? (y/n)? "
-read answer
-if [ "$answer" == "${answer#[Yy]}" ] ;then
-Tools Not Install
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e "\E[44;1;39m          ⇱ SCRIPT BY MASWAY ⇲          \E[0m"
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e ""
+sleep 5
+dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
+#########################
+
+BURIQ () {
+    curl -sS https://mymasway.github.io/izin > /root/tmp
+    data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
+    for user in "${data[@]}"
+    do
+    exp=( `grep -E "^### $user" "/root/tmp" | awk '{print $3}'` )
+    d1=(`date -d "$exp" +%s`)
+    d2=(`date -d "$biji" +%s`)
+    exp2=$(( (d1 - d2) / 86400 ))
+    if [[ "$exp2" -le "0" ]]; then
+    echo $user > /etc/.$user.ini
+    else
+    rm -f  /etc/.$user.ini > /dev/null 2>&1
+    fi
+    done
+    rm -f  /root/tmp
+}
+# https://mymasway.github.io/izin 
+MYIP=$(curl -sS ipv4.icanhazip.com)
+Name=$(curl -sS https://mymasway.github.io/izin | grep $MYIP | awk '{print $2}')
+echo $Name > /usr/local/etc/.$Name.ini
+CekOne=$(cat /usr/local/etc/.$Name.ini)
+
+Bloman () {
+if [ -f "/etc/.$Name.ini" ]; then
+CekTwo=$(cat /etc/.$Name.ini)
+    if [ "$CekOne" = "$CekTwo" ]; then
+        res="Expired"
+    fi
 else
-wget https://raw.githubusercontent.com/mymasway/XRAY/main/ssh/cf.sh && chmod +x cf.sh && ./cf.sh
-wget https://raw.githubusercontent.com/mymasway/XRAY/main/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
+res="Permission Accepted..."
 fi
-#
+}
 
-#install Websocket
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-echo -e "\E[44;1;39m                     ⇱ INSTALL Websocket ⇲                       \E[0m"
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+PERMISSION () {
+    MYIP=$(curl -sS ipv4.icanhazip.com)
+    IZIN=$(curl -sS https://mymasway.github.io/izin | awk '{print $4}' | grep $MYIP)
+    if [ "$MYIP" = "$IZIN" ]; then
+    Bloman
+    else
+    res="Permission Denied!"
+    fi
+    BURIQ
+}
+PERMISSION
+sleep 1
 echo -e ""
-echo -ne "[ ${yell}ORANGE${NC} ] Ingin Menginstall Websocket ? (y/n)? "
-read answer
-if [ "$answer" == "${answer#[Yy]}" ] ;then
-Tools Not Install
-else
-wget https://raw.githubusercontent.com/mymasway/XRAY/main/websocket/python.sh && chmod +x python.sh && ./python.sh
-fi
-#
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e "\E[44;1;39m          ⇱ Menu Utama MASWAY ⇲          \E[0m"
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e ""
+sleep 2
+mkdir /var/lib/maswayvpn;
+echo "IP=" >> /var/lib/maswayvpn/ipvps.conf
+wget https://raw.githubusercontent.com/mymasway/main/cf.sh && chmod +x cf.sh && ./cf.sh
+#install v2ray
+echo -e ""
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e "\E[44;1;39m          ⇱ INSTALL V2RAY ⇲          \E[0m"
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e ""
+sleep 2
+wget https://${akbarvpnnnnnn}/ins-xray.sh && chmod +x ins-xray.sh && screen -S xray ./ins-xray.sh
+#install ssh ovpn
+echo -e ""
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e "\E[44;1;39m          ⇱ INSTALL SSH-CDN ⇲          \E[0m"
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e ""
+sleep 2
+wget https://${akbarvpn}/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
+wget https://${akbarvpnn}/sstp.sh && chmod +x sstp.sh && screen -S sstp ./sstp.sh
+#install ssr
+echo -e ""
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e "\E[44;1;39m          ⇱ INSTALL SSR ⇲          \E[0m"
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e ""
+sleep 2
+wget https://${akbarvpnnn}/ssr.sh && chmod +x ssr.sh && screen -S ssr ./ssr.sh
+wget https://${akbarvpnnnn}/sodosok.sh && chmod +x sodosok.sh && screen -S ss ./sodosok.sh
+#installwg
+echo -e ""
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e "\E[44;1;39m          ⇱ INSTALL WG ⇲          \E[0m"
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e ""
+sleep 2
+wget https://${akbarvpnnnnn}/wg.sh && chmod +x wg.sh && screen -S wg ./wg.sh
+#install L2TP
+echo -e ""
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e "\E[44;1;39m          ⇱ INSTALL L2TP ⇲          \E[0m"
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e ""
+sleep 2
+wget https://${akbarvpnnnnnnn}/ipsec.sh && chmod +x ipsec.sh && screen -S ipsec ./ipsec.sh
+wget https://${akbarvpnnnnnnnn}/set-br.sh && chmod +x set-br.sh && ./set-br.sh
+# Websocket
+echo -e ""
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e "\E[44;1;39m          ⇱ INSTALL WEBSOCKET ⇲          \E[0m"
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e ""
+sleep 2
+wget https://${akbarvpnnnnnnnnn}/edu.sh && chmod +x edu.sh && ./edu.sh
+# Ohp Server
+echo -e ""
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e "\E[44;1;39m          ⇱ INSTALL OHP ⇲          \E[0m"
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e ""
+sleep 2
+wget https://${akbarvpnnnnnnnnnn}/ohp.sh && chmod +x ohp.sh && ./ohp.sh
 
-clear
-#Instal Xray
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-echo -e "\E[44;1;39m                     ⇱ INSTALL XRAY ⇲                       \E[0m"
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-echo -e ""
-echo -ne "[ ${yell}ORANGE${NC} ] Ingin Menginstall Xray ? (y/n)? "
-read answer
-if [ "$answer" == "${answer#[Yy]}" ] ;then
-Xray Not Install
-else
-wget https://raw.githubusercontent.com/mymasway/XRAY/main/install-xray.sh && chmod +x install-xray.sh && ./install-xray.sh
-fi
-
-clear
-#install xmenu
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-echo -e "\E[44;1;39m                     ⇱ INSTALL MENU ⇲                       \E[0m"
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-echo -e ""
-wget https://raw.githubusercontent.com/mymasway/XRAY/main/menu/updatedll.sh && chmod +x updatedll.sh && ./updatedll.sh
-#
+rm -f /root/ssh-vpn.sh
+rm -f /root/sstp.sh
+rm -f /root/wg.sh
+rm -f /root/ss.sh
+rm -f /root/ssr.sh
+rm -f /root/ins-xray.sh
+rm -f /root/ipsec.sh
+rm -f /root/set-br.sh
+rm -f /root/edu.sh
+rm -f /root/ohp.sh
 cat <<EOF> /etc/systemd/system/autosett.service
 [Unit]
 Description=autosetting
-Documentation=https://t.me/zerossl
+Documentation=https://t.me/MasWayVPN
 
 [Service]
 Type=oneshot
@@ -107,52 +240,51 @@ WantedBy=multi-user.target
 EOF
 systemctl daemon-reload
 systemctl enable autosett
-#SELESAI
-clear
+wget -O /etc/set.sh "https://${akbarvpn}/set.sh"
+chmod +x /etc/set.sh
+history -c
+echo "1.2" > /home/ver
 echo " "
 echo "Installation has been completed!!"echo " "
+echo "============================================================================" | tee -a log-install.txt
 echo "" | tee -a log-install.txt
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}" | tee -a log-install.txt
-echo -e "\E[44;1;39m                     ⇱ SCRIPT XRAY MULTI PORT ⇲                       \E[0m" | tee -a log-install.txt
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}" | tee -a log-install.txt
-echo -e "" | tee -a log-install.txt
+echo "----------------------------------------------------------------------------" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "   >>> Service & Port"  | tee -a log-install.txt
-echo "   - Nginx                                                    : 89"  | tee -a log-install.txt
-echo "   - PORT SQUID                  : 4000,5000"  | tee -a log-install.txt
-echo "   - PORT STUNNEL5                  : 500"  | tee -a log-install.txt
-echo "   - WEBSOCKET NON TLS                  : 8880,80"  | tee -a log-install.txt
-echo "   - PORT OVPN WS NON TLS                  : 8080,80"  | tee -a log-install.txt
-echo "   - PORT OVPN TCP                  : 700"  | tee -a log-install.txt
-echo "   - PORT OVPN UDP                  : 800"  | tee -a log-install.txt
-echo "   - PORT OPENSSH                  : 443"  | tee -a log-install.txt
-echo "   - PORT OVPN SSL                  : 443"  | tee -a log-install.txt
-echo "   - PORT DROPBEAR                  : 443"  | tee -a log-install.txt
-echo "   - PORT OVPN WS TLS                  : 443"  | tee -a log-install.txt
-echo "   - WEBSOCKET TLS                  : 8443,2096,2053,443"  | tee -a log-install.txt
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}" | tee -a log-install.txt
-echo "   - XRAYS TROJAN WS TLS                  : 443"  | tee -a log-install.txt
-echo "   - XRAYS SHADOWSOCKS WS TLS   : 443"  | tee -a log-install.txt
-echo "   - XRAYS VLESS WS TLS                      : 443"  | tee -a log-install.txt
-echo "   - XRAYS VMESS WS TLS                     : 443"  | tee -a log-install.txt
-echo "   - XRAYS TROJAN WS HTTP               : 80"  | tee -a log-install.txt
-echo "   - XRAYS SHADOWSOCKS  HTTP       : 80"  | tee -a log-install.txt
-echo "   - XRAYS VLESS WS HTTP                   : 80"  | tee -a log-install.txt
-echo "   - XRAYS VMESS WS HTTP                  : 80"  | tee -a log-install.txt
-echo "   - XRAYS TROJAN GRPC                       : 443"  | tee -a log-install.txt
-echo "   - XRAYS SHADOWSOCKS GRPC        : 443"  | tee -a log-install.txt
-echo "   - XRAYS VMESS GRPC                         : 443"  | tee -a log-install.txt
-echo "   - XRAYS VLESS GRPC                          : 443"  | tee -a log-install.txt
-echo ""  | tee -a log-install.txt
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}" | tee -a log-install.txt
+echo "   - OpenSSH                 : 443, 22"  | tee -a log-install.txt
+echo "   - OpenVPN                 : TCP 1194, UDP 2200, SSL 990"  | tee -a log-install.txt
+echo "   - Stunnel5                : 443, 445, 777"  | tee -a log-install.txt
+echo "   - Dropbear                : 443, 109, 143"  | tee -a log-install.txt
+echo "   - Squid Proxy             : 3128, 8080"  | tee -a log-install.txt
+echo "   - Badvpn                  : 7100, 7200, 7300"  | tee -a log-install.txt
+echo "   - Nginx                   : 89"  | tee -a log-install.txt
+echo "   - Wireguard               : 7070"  | tee -a log-install.txt
+echo "   - L2TP/IPSEC VPN          : 1701"  | tee -a log-install.txt
+echo "   - PPTP VPN                : 1732"  | tee -a log-install.txt
+echo "   - SSTP VPN                : 444"  | tee -a log-install.txt
+echo "   - Shadowsocks-R           : 1443-1543"  | tee -a log-install.txt
+echo "   - SS-OBFS TLS             : 2443-2543"  | tee -a log-install.txt
+echo "   - SS-OBFS HTTP            : 3443-3543"  | tee -a log-install.txt
+echo "   - XRAYS Vmess TLS         : 8443"  | tee -a log-install.txt
+echo "   - XRAYS Vmess None TLS    : 80"  | tee -a log-install.txt
+echo "   - XRAYS Vless TLS         : 8443"  | tee -a log-install.txt
+echo "   - XRAYS Vless None TLS    : 80"  | tee -a log-install.txt
+echo "   - XRAYS Trojan            : 2083"  | tee -a log-install.txt
+echo "   - Websocket TLS           : 443"  | tee -a log-install.txt
+echo "   - Websocket None TLS      : 8880"  | tee -a log-install.txt
+echo "   - Websocket Ovpn          : 2086"  | tee -a log-install.txt
+echo "   - OHP SSH                 : 8181"  | tee -a log-install.txt
+echo "   - OHP Dropbear            : 8282"  | tee -a log-install.txt
+echo "   - OHP OpenVPN             : 8383"  | tee -a log-install.txt
+echo "   - Tr Go                   : 2087"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "   >>> Server Information & Other Features"  | tee -a log-install.txt
 echo "   - Timezone                : Asia/Jakarta (GMT +7)"  | tee -a log-install.txt
-echo "   - Fail2Ban                  : [ON]"  | tee -a log-install.txt
-echo "   - Dflate                       : [ON]"  | tee -a log-install.txt
-echo "   - IPtables                   : [ON]"  | tee -a log-install.txt
-echo "   - Auto-Reboot           : [ON]"  | tee -a log-install.txt
-echo "   - IPv6                          : [OFF]"  | tee -a log-install.txt
+echo "   - Fail2Ban                : [ON]"  | tee -a log-install.txt
+echo "   - Dflate                  : [ON]"  | tee -a log-install.txt
+echo "   - IPtables                : [ON]"  | tee -a log-install.txt
+echo "   - Auto-Reboot             : [ON]"  | tee -a log-install.txt
+echo "   - IPv6                    : [OFF]"  | tee -a log-install.txt
 echo "   - Autoreboot On 05.00 GMT +7" | tee -a log-install.txt
 echo "   - Autobackup Data" | tee -a log-install.txt
 echo "   - Restore Data" | tee -a log-install.txt
@@ -160,12 +292,13 @@ echo "   - Auto Delete Expired Account" | tee -a log-install.txt
 echo "   - Full Orders For Various Services" | tee -a log-install.txt
 echo "   - White Label" | tee -a log-install.txt
 echo "   - Installation Log --> /root/log-install.txt"  | tee -a log-install.txt
+echo -e ""
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e "\E[44;1;39m          ⇱ INSTALL SC MASWAY SELESAI ⇲          \E[0m"
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e ""
+sleep 2
 echo " Reboot 15 Sec"
 sleep 15
-cd
-rm -rf updatedll
-rm -rf updatedll.sh
-rm -rf setup.sh
-rm -rf install-xray.sh
-rm -rf install-tools.sh
-
+rm -f setup.sh
+reboot
