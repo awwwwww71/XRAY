@@ -328,7 +328,7 @@ cat > /etc/xray/config.json << END
 }
 END
 rm -rf /etc/systemd/system/xray.service.d
-cat > /etc/systemd/system/xray.service
+cat > /etc/systemd/system/xray.service <<EOF
 Description=Xray Service
 Documentation=https://github.com/xtls
 After=network.target nss-lookup.target
