@@ -82,5 +82,5 @@ echo $SUB_DOMAIN > /root/domain
 # / / Make Main Directory
 mkdir -p /usr/bin/xray
 mkdir -p /etc/xray
-cp /root/domain /etc/xray
+cp /root /etc/xray
 rm -f /root/cf.sh
