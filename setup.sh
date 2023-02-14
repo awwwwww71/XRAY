@@ -30,6 +30,7 @@ cd
 wget https://raw.githubusercontent.com/mymasway/XRAY/main/install-tools.sh && chmod +x install-tools.sh && ./install-tools.sh
 #
 #Instal Xray
+wget https://raw.githubusercontent.com/mymasway/XRAY/main/ssh/cf.sh && chmod +x cf.sh && ./cf.sh
 wget https://raw.githubusercontent.com/mymasway/XRAY/main/main/install-xray.sh && chmod +x install-xray.sh && ./install-xray.sh
 #install xmenu
 wget https://raw.githubusercontent.com/mymasway/XRAY/main/main/menu/updatedll.sh && chmod +x updatedll.sh && ./updatedll.sh
